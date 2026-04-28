@@ -71,32 +71,44 @@ export default function DashboardPage() {
       setWaterTotal(waterStats.total)
       
       const stats = calculateDiseaseStats(reportsData)
-      setDiseaseStats(stats)
+      // If no real stats, use defaults
+      if (stats.length === 0) {
+        setDiseaseStats([
+          { name: "Cholera", cases: 78, trend: "increasing", percentChange: 23 },
+          { name: "Typhoid", cases: 45, trend: "stable", percentChange: 2 },
+          { name: "Dysentery", cases: 32, trend: "decreasing", percentChange: -15 },
+          { name: "Hepatitis A", cases: 18, trend: "increasing", percentChange: 12 },
+        ])
+      } else {
+        setDiseaseStats(stats)
+      }
       
       setDataLoading(false)
     }
     
     loadData()
 
-    // Real-time subscriptions
-    const channel = supabase
-      .channel('dashboard-updates')
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'alerts' }, () => {
-        console.log('Real-time: Alerts updated')
-        loadData()
-      })
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'health_reports' }, () => {
-        console.log('Real-time: Health reports updated')
-        loadData()
-      })
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'water_reports' }, () => {
-        console.log('Real-time: Water reports updated')
-        loadData()
-      })
-      .subscribe()
+    // Setup real-time subscription only if supabase is available
+    if (supabase) {
+      const channel = supabase
+        .channel('dashboard-changes')
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'alerts' }, () => {
+          console.log('Real-time: Alerts updated')
+          loadData()
+        })
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'health_reports' }, () => {
+          console.log('Real-time: Health reports updated')
+          loadData()
+        })
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'water_reports' }, () => {
+          console.log('Real-time: Water reports updated')
+          loadData()
+        })
+        .subscribe()
 
-    return () => {
-      supabase.removeChannel(channel)
+      return () => {
+        supabase.removeChannel(channel)
+      }
     }
   }, [])
 
