@@ -71,6 +71,12 @@ export function useAuth() {
       setIsLoading(false)
     }
 
+    // Force stop loading after 3 seconds as fallback
+    const timeout = setTimeout(() => {
+      console.log('useAuth loading timeout - forcing stop')
+      setIsLoading(false)
+    }, 3000)
+
     getSession()
 
     // Listen for auth changes
@@ -119,6 +125,7 @@ export function useAuth() {
     }
 
     return () => {
+      clearTimeout(timeout)
       if (subscription) subscription.unsubscribe()
     }
   }, [])
