@@ -50,8 +50,8 @@ export default function MapComponent({ villages, selectedVillage, onSelectVillag
       case "critical": return "#ef4444" // red-500
       case "high": return "#f97316" // orange-500
       case "moderate": return "#f59e0b" // amber-500
-      case "low": return "#10b981" // emerald-500
-      default: return "#3b82f6" // blue-500
+      case "low": return "#170c79" // brand
+      default: return "#170c79" // brand
     }
   }
 

@@ -147,5 +147,29 @@
     "typhoid": "Typhoid",
     "dysentery": "Dysentery",
     "hepatitis": "Hepatitis"
+  },
+  "hygieneQuest": {
+    "pageTitle": "Hygiene Quest",
+    "pageSub": "Complete each module to protect yourself and your community",
+    "mod1Label": "Module 1 — Handwashing",
+    "mod1Title": "Wash your hands like a pro",
+    "mod1Text": "Scrub for at least 20 seconds with soap and water — especially before eating, after using the restroom, after coughing, and after touching shared surfaces. Germs spread fast but soap breaks them down instantly.",
+    "mod2Label": "Module 2 — Respiratory Hygiene",
+    "mod2Title": "Cover up when you cough or sneeze",
+    "mod2Text": "Always use a tissue or the inside of your elbow — never your bare hands. Wear a mask in crowded indoor spaces during flu season. Disposing of tissues immediately stops respiratory germs from hitching a ride on surfaces.",
+    "mod3Label": "Module 3 — Vaccinations",
+    "mod3Title": "Vaccines are your body's cheat codes",
+    "mod3Text": "Staying up to date on vaccines for flu, typhoid, hepatitis, and COVID-19 trains your immune system before real pathogens arrive. Herd immunity protects those who can't be vaccinated — your shot matters for everyone around you.",
+    "mod4Label": "Module 4 — Food Safety",
+    "mod4Title": "Safe food = healthy gut",
+    "mod4Text": "Always wash fruits and vegetables under clean running water. Store raw meat separately and cook to safe internal temperatures. Refrigerate leftovers within 2 hours. Foodborne illnesses are preventable — the kitchen is your first line of defense.",
+    "done": "Done",
+    "completed": "Completed!",
+    "yourProgress": "Your progress",
+    "tracker0": "Complete a module to start your streak!",
+    "tracker1": "Great start! Keep washing those hands 🧼",
+    "tracker2": "Halfway there! You're a hygiene hero!",
+    "tracker3": "3 down! One more to finish the quest!",
+    "tracker4": "Quest complete! You're a Health Champion! 🏆"
   }
 }

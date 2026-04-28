@@ -147,5 +147,29 @@
     "typhoid": "Taiphod",
     "dysentery": "Pruid snam",
     "hepatitis": "Hepataitis"
+  },
+  "hygieneQuest": {
+    "pageTitle": "Hygiene Quest",
+    "pageSub": "Pynbiang ki module baroh ban iashim ia ka community jong phi",
+    "mod1Label": "Module 1 — Sah Kti",
+    "mod1Title": "Sah kti kumba u professional",
+    "mod1Text": "Sah kti ha ka sabun bad ka um haduh 20 seconds — bynta hadien ba buh, hadien ban lah bathroom, hadien ba khiah.",
+    "mod2Label": "Module 2 — Respiratory Hygiene",
+    "mod2Title": "Pyniap ka muh mynta ba khiah ne sneeze",
+    "mod2Text": "Dei dei pyndonkam ka tissue ne ka jingkynmaw ka shong kti — bym dei ka kti ba la iap. Shong mask ha ki jaka bapom.",
+    "mod3Label": "Module 3 — Vaccinations",
+    "mod3Title": "Ki vaccine ki dei ki cheat code jong ka met",
+    "mod3Text": "Pynbiang ki vaccine na ka flu, typhoid, hepatitis, bad COVID-19 ban train ia ka immune system jong phi.",
+    "mod4Label": "Module 4 — Jingiakham",
+    "mod4Title": "Jingiakham ba jingkynmaw = jingim kham",
+    "mod4Text": "Dei dei sah ki fruit bad ki sabji ha ka um ba jingkynmaw. Thoh ia ka doh ba khraw shisha bad kynduh ha ka temperature ba safe.",
+    "done": "La Pynbiang",
+    "completed": "La Pynbiang Suki!",
+    "yourProgress": "Ka jingthoh jong phi",
+    "tracker0": "Pynbiang ia ka module khatba snem ban sdang ka streak!",
+    "tracker1": "Bha ba sdang! Long sah kti shai shai 🧼",
+    "tracker2": "Shi stap la wan! Phi dei u hygiene hero!",
+    "tracker3": "3 la ban! Ar mae kynmaw!",
+    "tracker4": "Quest la pynbiang! Phi dei u Health Champion! 🏆"
   }
 }

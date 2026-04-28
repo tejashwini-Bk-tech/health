@@ -1,15 +1,11 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Toaster } from 'sonner'
 import './globals.css'
 import { LanguageProvider } from '@/hooks/use-language'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
-  title: 'Neural Nexus - Community Health Monitoring',
+  title: 'AquaNexis - Community Health Monitoring',
   description: 'Smart Community Health Monitoring & Early Warning System for Water-Borne Diseases in Rural Northeast India',
   generator: 'v0.app',
   icons: {
@@ -38,10 +34,32 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="font-sans antialiased mesh-bg min-h-screen bg-white">
+        {/* Noise texture overlay for premium feel */}
+        <div className="noise-overlay" aria-hidden="true" />
         <LanguageProvider>
           {children}
-          <Toaster position="top-center" richColors />
+          <Toaster
+            position="top-center"
+            richColors
+            theme="light"
+            toastOptions={{
+              style: {
+                background: 'hsl(0 0% 100% / 0.9)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid hsl(220 15% 90% / 0.6)',
+                color: 'hsl(220 25% 12%)',
+              },
+            }}
+          />
         </LanguageProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
