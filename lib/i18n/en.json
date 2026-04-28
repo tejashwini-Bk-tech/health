@@ -171,5 +171,19 @@
     "tracker2": "Halfway there! You're a hygiene hero!",
     "tracker3": "3 down! One more to finish the quest!",
     "tracker4": "Quest complete! You're a Health Champion! 🏆"
+  },
+  "waterReports": {
+    "title": "Water Quality Reports",
+    "subtitle": "Community observations and safety status",
+    "safe": "Safe",
+    "unsafe": "Unsafe",
+    "recentSubmissions": "Recent Submissions",
+    "safeSources": "Safe Sources",
+    "unsafeSources": "Unsafe / At Risk",
+    "noReports": "No reports yet",
+    "noReportsDesc": "Water quality reports submitted by the community will appear here.",
+    "submitFirst": "Submit First Report",
+    "contamination": "Contamination Detected",
+    "noIssues": "No Issues Reported"
   }
 }

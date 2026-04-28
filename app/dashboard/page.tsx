@@ -213,13 +213,16 @@ export default function DashboardPage() {
               />
             </div>
             <div className="stagger-fade-in stagger-6">
-              <StatCard
-                title={t.dashboard.waterSources}
-                value={`${waterSafe}/${waterTotal}`}
-                subtitle={t.dashboard.safeToUse}
-                icon={Droplets}
-                iconColor="text-teal-500"
-              />
+              <Link href="/water-reports">
+                <StatCard
+                  title={t.dashboard.waterSources}
+                  value={`${waterSafe}/${waterTotal}`}
+                  subtitle={t.dashboard.safeToUse}
+                  icon={Droplets}
+                  iconColor="text-teal-500"
+                  className="cursor-pointer hover:scale-[1.02] transition-all"
+                />
+              </Link>
             </div>
           </div>
         </section>
