@@ -24,10 +24,10 @@ export default function LoginPage() {
   // Check if already logged in
   useEffect(() => {
     const checkSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession()
-      if (session) {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user) {
         console.log("Login page - already logged in, redirecting to dashboard")
-        router.push("/dashboard")
+        window.location.href = "/dashboard"
       }
     }
     checkSession()
@@ -63,10 +63,11 @@ export default function LoginPage() {
         if (error) {
           toast.error(error.message)
           console.error("Sign in error:", error)
-        } else if (data.session) {
+        } else {
           toast.success("Welcome back!")
-          router.push("/dashboard")
-          router.refresh()
+          // Sign-in can succeed even when the immediate response session is null
+          // (session hydration races, PKCE flows, etc.). On success, go to dashboard.
+          window.location.href = "/dashboard"
         }
       } else {
         // Handle Sign Up
@@ -89,8 +90,9 @@ export default function LoginPage() {
           // If auto sign-in occurs immediately (email confirmations disabled)
           if (data.session) {
             toast.success("Account created successfully!")
-            router.push("/dashboard")
-            router.refresh()
+            setTimeout(() => {
+              window.location.href = "/dashboard"
+            }, 100)
           } else {
             // If email confirmation is required
             toast.success("Account created! Check your email to verify your account.")
