@@ -43,6 +43,11 @@ export interface DbWaterReport {
 
 // Fetch active alerts
 export async function fetchAlerts(): Promise<DbAlert[]> {
+  if (!supabase) {
+    console.warn("Supabase client not available during build")
+    return []
+  }
+
   const { data, error } = await supabase
     .from("alerts")
     .select("*")
@@ -59,6 +64,11 @@ export async function fetchAlerts(): Promise<DbAlert[]> {
 
 // Fetch health reports for stats
 export async function fetchHealthReports(): Promise<DbHealthReport[]> {
+  if (!supabase) {
+    console.warn("Supabase client not available during build")
+    return []
+  }
+
   const { data, error } = await supabase
     .from("health_reports")
     .select("*")
@@ -74,6 +84,11 @@ export async function fetchHealthReports(): Promise<DbHealthReport[]> {
 
 // Fetch today's report count
 export async function fetchTodaysReportsCount(): Promise<number> {
+  if (!supabase) {
+    console.warn("Supabase client not available during build")
+    return 0
+  }
+
   const today = new Date().toISOString().split("T")[0]
   const { count, error } = await supabase
     .from("health_reports")
@@ -81,7 +96,7 @@ export async function fetchTodaysReportsCount(): Promise<number> {
     .gte("created_at", today)
 
   if (error) {
-    console.error("Error fetching today's reports:", error)
+    console.error("Error fetching today's reports count:", error)
     return 0
   }
 
@@ -90,6 +105,11 @@ export async function fetchTodaysReportsCount(): Promise<number> {
 
 // Fetch educational content
 export async function fetchLearnContent(): Promise<DbLearnContent[]> {
+  if (!supabase) {
+    console.warn("Supabase client not available during build")
+    return []
+  }
+
   const { data, error } = await supabase
     .from("learn_content")
     .select("*")
@@ -105,6 +125,11 @@ export async function fetchLearnContent(): Promise<DbLearnContent[]> {
 
 // Fetch water reports
 export async function fetchWaterReports(): Promise<DbWaterReport[]> {
+  if (!supabase) {
+    console.warn("Supabase client not available during build")
+    return []
+  }
+
   const { data, error } = await supabase
     .from("water_reports")
     .select("*")
@@ -125,6 +150,11 @@ export async function submitHealthReport(report: {
   location?: string
   notes?: string
 }): Promise<{ success: boolean; error?: string }> {
+  if (!supabase) {
+    console.warn("Supabase client not available during build")
+    return { success: false, error: "Database not available" }
+  }
+
   const { data: { user } } = await supabase.auth.getUser()
   
   if (!user) {
@@ -155,6 +185,11 @@ export async function submitWaterReport(report: {
   safe_to_drink: boolean
   contamination_detected?: boolean
 }): Promise<{ success: boolean; error?: string }> {
+  if (!supabase) {
+    console.warn("Supabase client not available during build")
+    return { success: false, error: "Database not available" }
+  }
+
   try {
     const { data: { user } } = await supabase.auth.getUser()
     

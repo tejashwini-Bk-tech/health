@@ -1,22 +1,24 @@
 import { createBrowserClient } from '@supabase/ssr'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 
 // Singleton browser client so auth state/cookies stay consistent across renders.
 let browserClient: ReturnType<typeof createBrowserClient> | undefined
 
 export const supabase =
-  browserClient ??
-  (browserClient = createBrowserClient(supabaseUrl, supabaseAnonKey, {
-    auth: {
-      autoRefreshToken: true,
-      persistSession: true,
-      detectSessionInUrl: true,
-      flowType: 'pkce',
-      debug: process.env.NODE_ENV === 'development',
-    },
-  }))
+  supabaseUrl && supabaseAnonKey
+    ? (browserClient ??
+        (browserClient = createBrowserClient(supabaseUrl, supabaseAnonKey, {
+          auth: {
+            autoRefreshToken: true,
+            persistSession: true,
+            detectSessionInUrl: true,
+            flowType: 'pkce',
+            debug: process.env.NODE_ENV === 'development',
+          },
+        })))
+    : null
 
 export type UserRole = 'user' | 'health_officer' | 'local_leader'
 
