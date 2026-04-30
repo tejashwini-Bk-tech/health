@@ -21,9 +21,15 @@ export default function WaterReportsPage() {
   useEffect(() => {
     const loadReports = async () => {
       setLoading(true)
-      const data = await fetchWaterReports()
-      setReports(data)
-      setLoading(false)
+      try {
+        const data = await fetchWaterReports()
+        setReports(data)
+      } catch (error) {
+        console.error("Failed to load water reports:", error)
+        setReports([])
+      } finally {
+        setLoading(false)
+      }
     }
     loadReports()
   }, [])

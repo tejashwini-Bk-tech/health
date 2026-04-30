@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, FileText, Map, Bell, BookOpen } from "lucide-react"
+import { Home, FileText, Map, Bell, BookOpen, MessageCircle } from "lucide-react"
 import { useLanguage } from "@/hooks/use-language"
 
 export function BottomNav() {
@@ -13,6 +13,7 @@ export function BottomNav() {
     { href: "/map", label: t.nav.map, icon: Map },
     { href: "/alerts", label: t.nav.alerts, icon: Bell },
     { href: "/learn", label: t.nav.learn, icon: BookOpen },
+    { href: "/chatbot", label: "Chat", icon: MessageCircle },
   ]
 
   return (

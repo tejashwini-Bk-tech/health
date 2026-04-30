@@ -33,16 +33,7 @@ export async function GET(request: Request) {
     const { error } = await supabase.auth.exchangeCodeForSession(code)
     
     if (!error) {
-      const response = NextResponse.redirect(`${origin}${next}`)
-      // Explicitly propagate cookies set by exchangeCodeForSession
-      // (This ensures consistency across all Next.js versions)
-      supabase.auth.onAuthStateChange(async (event, session) => {
-        if (event === 'SIGNED_IN') {
-           // Success!
-        }
-      })
-      
-      return response
+      return NextResponse.redirect(`${origin}${next}`)
     }
     
     console.error('Code exchange error:', error)

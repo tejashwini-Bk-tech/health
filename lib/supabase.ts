@@ -13,7 +13,9 @@ export const supabase =
           auth: {
             autoRefreshToken: true,
             persistSession: true,
-            detectSessionInUrl: true,
+            // Auth callback route exchanges the code server-side.
+            // Keep this false to avoid duplicate client-side code exchange.
+            detectSessionInUrl: false,
             flowType: 'pkce',
             debug: process.env.NODE_ENV === 'development',
           },

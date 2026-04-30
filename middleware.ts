@@ -37,7 +37,7 @@ export async function middleware(request: NextRequest) {
   console.log('Middleware - path:', path, 'user:', !!user)
 
   // Protected routes that require authentication
-  const protectedRoutes = ['/dashboard', '/alerts', '/report', '/map', '/learn']
+  const protectedRoutes = ['/dashboard', '/alerts', '/report', '/map', '/learn', '/chatbot']
   const isProtectedRoute = protectedRoutes.some(route => path.startsWith(route))
 
   // DEVELOPER BYPASS (Local Dev Only)
