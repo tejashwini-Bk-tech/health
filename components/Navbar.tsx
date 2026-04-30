@@ -33,6 +33,8 @@ export function Navbar({ userName = "User", role = "user", notificationCount = 0
 
   const handleLogout = async () => {
     await supabase.auth.signOut()
+    // Clear local dev bypass so middleware enforces auth again.
+    document.cookie = "dev-bypass=; path=/; max-age=0"
     toast.success("Logged out successfully")
     router.push("/login")
     router.refresh()

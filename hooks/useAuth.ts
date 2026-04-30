@@ -134,6 +134,8 @@ export function useAuth() {
     if (supabase) {
       await supabase.auth.signOut()
     }
+    // Clear local dev bypass so middleware doesn't keep allowing protected routes.
+    document.cookie = "dev-bypass=; path=/; max-age=0"
     router.push("/login")
     router.refresh()
   }
