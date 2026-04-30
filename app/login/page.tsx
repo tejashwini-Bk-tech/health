@@ -11,6 +11,7 @@ import { toast } from "sonner"
 
 export default function LoginPage() {
   const router = useRouter()
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://health-wys8.vercel.app"
   
   // Auth state
   const [isLogin, setIsLogin] = useState(true)
@@ -73,6 +74,7 @@ export default function LoginPage() {
           email,
           password,
           options: {
+            emailRedirectTo: `${appUrl}/auth/callback?next=/dashboard`,
             data: {
               full_name: fullName,
               role: 'user'
